@@ -6,18 +6,25 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v3
+  my-job:
+      runs-on: ubuntu-latest
 
-      - name: Setup Cog
-        uses: replicate/setup-cog@v1
-        with:
-          #token: ${{ secrets.REPLICATE_API_TOKEN }}
-          token: r8_ekmHa5SnvYNgypf7fla2hNcFMDf0kgi2Okjlc
+      steps:
+        - name: echo space
+            run: (echo "Free space:") && df -h
 
-      - name: Push to Replicate
-        run: |
-          cog push r8.im/benlin924/test4
+        - name: Check out code
+          uses: actions/checkout@v3
+
+        - name: Setup Cog
+          uses: replicate/setup-cog@v1
+          with:
+            token: ${{ secrets.REPLICATE_API_TOKEN }}
+
+        - name: Push to Replicate
+          run: |
+            cog push r8.im/benlin924/test5
+
+        - name: echo space
+            run: (echo "Free space:") && df -h
+
