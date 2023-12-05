@@ -10,14 +10,16 @@ jobs:
       runs-on: ubuntu-latest
 
       steps:
-        - name: echo space
-            run: (echo "Free space:") && df -h
+        - name: Free space
+          run: |
+            echo "Free space:"
+            df -h
 
         - name: Check out code
           uses: actions/checkout@v3
 
         - name: Setup Cog
-          uses: replicate/setup-cog@v1
+          uses: replicate/setup-cog@v1.0.3
           with:
             token: ${{ secrets.REPLICATE_API_TOKEN }}
 
@@ -25,6 +27,7 @@ jobs:
           run: |
             cog push r8.im/benlin924/test5
 
-        - name: echo space
-            run: (echo "Free space:") && df -h
-
+        - name: Free space
+          run: |
+            echo "Free space:"
+            df -h
